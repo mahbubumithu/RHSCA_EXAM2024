@@ -12,9 +12,23 @@ ANSWER:
 or 
 #systemctl restart NetworkManager
 
+#hostnamectl set-hostname station.domain40.example.com
+#hostnamectl status
+=======================================================================
 
 QUESTION 2: Add 3 users: harry, natasha, tom.
 The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive.
+
+ANSWER:
+#groupadd admin
+#useradd -G admin harry
+#useradd -G admin natasha
+#useradd -s /sbin/nologin tom
+#passwd harry
+.
+.
+========================================================================
+
 
 QUESTION 3: Create a catalog under /home named admins. Its respective group is requested to be the admin group. The group users could read and write, while other users are not allowed to access it. The files created by users from the same group should also be the admin group.
 
