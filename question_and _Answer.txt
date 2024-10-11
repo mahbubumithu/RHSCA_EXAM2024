@@ -1,0 +1,35 @@
+QUESTION 1: 11Configure your Host Name, IP Address, Gateway and DNS.
+Host name: station.domain40.example.com
+IP Address:172.24.40.40/24
+Gateway172.24.40.1
+DNS:172.24.40.1
+
+ANSWER:
+#mcli con show
+#nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1
+#nmcli con mod LAN ipv4.method manual
+#nmcli con up LAN
+or 
+#systemctl restart NetworkManager
+
+
+QUESTION 2: Add 3 users: harry, natasha, tom.
+The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive.
+
+QUESTION 3: Create a catalog under /home named admins. Its respective group is requested to be the admin group. The group users could read and write, while other users are not allowed to access it. The files created by users from the same group should also be the admin group.
+
+QUESTION 4: Configure a task: plan to run echo hello command at 14:23 every day.
+
+QUESTION 5: Find the files owned by harry, and copy it to catalog: /opt/dir
+
+QUESTION 6: Find the rows that contain abcde from file /etc/testfile, and write it to the file/tmp/testfile, and the sequence is requested as the same as /etc/testfile.
+
+QUESTION 7; Create a 2G swap partition which take effect automatically at boot-start, and it should not affect the original swap partition.
+
+QUESTION 8: Create a user named alex, and the user id should be 1234, and the password should be alex111.
+
+QUESTION 9: Install a FTP server, and request to anonymous download from /var/ftp/pub catalog. (it needs you to configure yum direct to the already existing file server.)
+
+QUESTION 10: Configure a HTTP server, which can be accessed through http://station.domain40.example.com. Please download the released page from http://ip/dir/example.html.
+
+QUESTION 11: 
