@@ -42,6 +42,12 @@ QUESTION 7; Create a 2G swap partition which take effect automatically at boot-s
 
 QUESTION 8: Create a user named alex, and the user id should be 1234, and the password should be alex111.
 
+ANSWER:
+#useradd -u 1234 alex
+#passwd alex
+#tail -1 /etc/passwd
+===============================================================================
+
 QUESTION 9: Install a FTP server, and request to anonymous download from /var/ftp/pub catalog. (it needs you to configure yum direct to the already existing file server.)
 
 QUESTION 10: Configure a HTTP server, which can be accessed through http://station.domain40.example.com. Please download the released page from http://ip/dir/example.html.
