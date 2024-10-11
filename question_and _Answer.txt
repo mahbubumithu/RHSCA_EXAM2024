@@ -52,4 +52,20 @@ QUESTION 9: Install a FTP server, and request to anonymous download from /var/ft
 
 QUESTION 10: Configure a HTTP server, which can be accessed through http://station.domain40.example.com. Please download the released page from http://ip/dir/example.html.
 
-QUESTION 11: 
+QUESTION 11: Create a script file name find.sh. when you run this script it will find all files from 30k to 60k file size from the directory /etc directory & copies those files to /root/data directory. set the set-uid permission to these scripts.
+ANSWER:
+#vi find.sh
+
+#!/bin/bash
+ls -l /root/data > /dev/null 2>&1
+
+if [ $? -ne 0 ]: then
+mkdir /root/data
+find /etc -size +30k -size -60k -exec cp {} /root/data/ \;
+echo "Files copied done"
+
+else
+echo "Already files has been copied"
+file
+================================================================================
+
