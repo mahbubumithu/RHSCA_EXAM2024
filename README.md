@@ -56,3 +56,25 @@ Both tools can also be combined with tar to compress multiple files into a singl
 #tar -cjvf archive.tar.bz2 directory/
 
 ```
+---
+
+**QUESTION : Change the current tuning profile for serverb to default profile.**
+
+**ANSWER:**
+
+**Tuned** is a powerful tool used on Linux systems (mainly Red Hat-based distributions like RHEL, CentOS, and Fedora) to optimize and manage system performance. It is a dynamic system tuning daemon that can adjust system settings based on specific workload profiles to achieve better performance, power savings, or a balance between the two.
+
+```linux
+# dnf install tuned -y
+# systemctl enable tuned
+# systemctl start tuned
+# tuned-adm recommend
+virtual-guest
+# tuned-adm profile virtual-guest
+# tuned-adm active
+# tuned-adm profile_info ( check summary information of the current active tuned profile )
+
+```
+
+---
+
