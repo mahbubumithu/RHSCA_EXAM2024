@@ -1,6 +1,7 @@
 # **RHCSA(Ex200)EXAM QUESTIONS and ANSWER**
 
 ---
+
 **QUESTION 1: Configure your Host Name, IP Address, Gateway and DNS**.
 
 ```linux
@@ -19,7 +20,7 @@ DNS:172.24.40.1
 nmcli device status
 nmcli connection show -active
 If the connection is unmanaged or not connecting, try this command.
-sudo nmcli connection mod <connection-name> connection.autoconnect yes
+sudo nmcli connection mod LAN connection.autoconnect yes
 Activate Changes
 nmcli connection reload
 This only makes the NM aware of the changes.
@@ -46,7 +47,7 @@ Add IP address to the trusted zone. firewall-cmd --zone=trusted --add-source=192
 List configuration for all zones. firewall-cmd --list-all-zones
 
 
-or 
+or
 #systemctl restart NetworkManager
 
 #hostnamectl set-hostname station.domain40.example.com
@@ -112,6 +113,7 @@ virtual-guest
 ```
 
 ---
+
 **QUESTION 4: Configure local repository using following link**
 
 - <http://content.example.com/rhel9.0/x86_64/BaseOS>
@@ -137,6 +139,7 @@ gpgcheck=0
 ```
 
 ---
+
 **QUESTION 5: Create a user named alex, and the user id should be 1234, and the password should be redhat.**
 
 **ANSWER:**
@@ -151,20 +154,21 @@ The **useradd** command in Linux is used to create new user accounts. The -u opt
 ```
 
 ---
+
 **QUESTION 6: Add 3 users: harry, natasha, tom.
 The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive.**
 
 1. **useradd -g** (Primary Group):
-The -g option is used to specify the primary group of the user. Each user must belong to a primary group, and this group is used for file ownership by default.
+   The -g option is used to specify the primary group of the user. Each user must belong to a primary group, and this group is used for file ownership by default.
 2. **useradd -G** (Supplementary Groups):
-The -G option allows you to add the user to one or more supplementary groups. A user can belong to multiple groups
+   The -G option allows you to add the user to one or more supplementary groups. A user can belong to multiple groups
 3. The **useradd -s** option is used to specify the login shell for the user. A shell is a command-line interface that a user interacts with when they log into a Linux system.
    **Common Shells:**
-    /bin/bash: Bash shell (most common and default for many distributions)
-    /bin/sh: Bourne shell (a basic shell)
-    /bin/zsh: Z shell (advanced shell with more features)
-    /sbin/nologin: This is used to prevent the user from logging in interactively. This is useful for system accounts or users who should not have direct shell access.
-**ANSWER:**
+   /bin/bash: Bash shell (most common and default for many distributions)
+   /bin/sh: Bourne shell (a basic shell)
+   /bin/zsh: Z shell (advanced shell with more features)
+   /sbin/nologin: This is used to prevent the user from logging in interactively. This is useful for system accounts or users who should not have direct shell access.
+   **ANSWER:**
 
 ```linux
 #groupadd admin
@@ -177,6 +181,7 @@ The -G option allows you to add the user to one or more supplementary groups. A 
 ```
 
 ---
+
 **QUESTION 7: Find all the files owned by user natasha and redirect the output to /tmp/output.
 Find all files that are larger than 5MiB in the /etc directory and copy them to /find/largedir and redirect the output to /find/largefiles.**
 
