@@ -73,3 +73,35 @@ QUESTION: Add an additional swap partition of 512 MiB to your system. The swap p
 your system boots. Do not remove or otherwise alter any existing swap partition on your system.
 
 ANSWER:
+
+Step 1: Create a New Logical Volume for Swap
+Check Free Space in the Volume Group:
+#vgdisplay
+Create the Swap Logical Volume:
+#sudo lvcreate -L 512M -n swaplv vg_name
+Format the Logical Volume as Swap
+#sudo mkswap /dev/vg_name/swaplv
+Enable the Swap Volume
+#sudo swapon /dev/vg_name/swaplv
+To verify
+#swapon --show
+Make the Swap Volume Persistent
+sudo vi /etc/fstab
+/dev/vg_name/swaplv none swap sw 0 0
+=================================================================================
+List Available Drives:
+#lsblk
+Partition the Drive (if needed)
+#sudo fdisk /dev/sdb
+In fdisk:
+
+- Type n to create a new partition.
+- Select primary partition (usually p).
+- Press Enter to accept the defaults, which will allocate all free space to the partition.
+- Type t and then 82 to set the partition type to Linux swap.
+- Type w to write changes and exit.
+Format the Partition as Swap
+#sudo mkswap /dev/sdb1
+Enable the Swap Partition
+#sudo swapon /dev/sdb1
+#swapon --show
