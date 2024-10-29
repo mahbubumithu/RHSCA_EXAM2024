@@ -34,6 +34,61 @@ QUESTION 3: Create a catalog under /home named admins. Its respective group is r
 
 QUESTION 4: Configure a task: plan to run echo hello command at 14:23 every day.
 
+ANSWER: 
+In Linux, crontab is a configuration file and utility that defines tasks to run automatically at specified intervals. These scheduled tasks, known as cron jobs, are managed by the cron daemon. Cron is commonly used for repetitive tasks like backups, system maintenance, or monitoring.
+
+Crontab Syntax
+* * * * * command_to_execute
+| | | | |
+| | | | └── Day of the week (0 - 7) (Sunday is 0 or 7)
+| | | └──── Month (1 - 12)
+| | └────── Day of the month (1 - 31)
+| └──────── Hour (0 - 23)
+└────────── Minute (0 - 59)
+
+Field Values
+Minute: 0 to 59.
+Hour: 0 to 23 (24-hour format).
+Day of the Month: 1 to 31.
+Month: 1 to 12 (1 for January, 2 for February, etc.).
+Day of the Week: 0 to 7 (0 or 7 for Sunday, 1 for Monday, etc.).
+Special Characters
+*: Represents "every" possible value for that time unit (e.g., * in the hour field means every hour).
+,: Allows multiple values (e.g., 1,15 in the day field means the 1st and 15th of the month).
+-: Specifies a range of values (e.g., 1-5 in the day field means Monday to Friday).
+/: Specifies intervals (e.g., */5 in the minute field means every 5 minutes).
+
+Run a script every day at 2:23 PM:
+23 14 * * * /path/to/script.sh
+
+Run a backup every Sunday at midnight:
+0 0 * * 0 /path/to/backup.sh
+Run a job every 2 minutes:
+*/2 * * * * /path/to/job.sh
+Run a task on the 1st and 15th of each month at 5:00 PM:
+0 17 1,15 * * /path/to/task.sh
+Run a task every Monday to Friday at 8:00 AM:
+0 8 * * 1-5 /path/to/weekday_task.sh
+
+Edit a User’s Crontab:
+crontab -e
+List a User’s Crontab:
+crontab -l
+Edit Crontab for Another User (requires root privileges):
+sudo crontab -u username -e
+
+Access Natasha’s Crontab
+sudo crontab -u natasha -e
+
+Add the Cron Job
+# Runs /bin/echo hello every day at 14:23
+23 14 * * * /bin/echo hello
+
+# Runs /bin/echo hello every 2 minutes
+*/2 * * * * /bin/echo hello
+
+
+
 QUESTION 5: Find the files owned by harry, and copy it to catalog: /opt/dir
 
 QUESTION 6: Find the rows that contain abcde from file /etc/testfile, and write it to the file/tmp/testfile, and the sequence is requested as the same as /etc/testfile.
