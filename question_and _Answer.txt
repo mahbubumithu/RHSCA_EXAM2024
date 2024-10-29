@@ -69,3 +69,7 @@ echo "Already files has been copied"
 file
 ================================================================================
 
+QUESTION: Add an additional swap partition of 512 MiB to your system. The swap partition should automatically mount when 
+your system boots. Do not remove or otherwise alter any existing swap partition on your system.
+
+ANSWER:
