@@ -17,6 +17,36 @@ DNS:172.24.40.1
 #nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1
 #nmcli con mod LAN ipv4.method manual
 #nmcli con up LAN
+nmcli device status
+nmcli connection show -active
+If the connection is unmanaged or not connecting, try this command.
+sudo nmcli connection mod <connection-name> connection.autoconnect yes
+Activate Changes
+nmcli connection reload
+This only makes the NM aware of the changes.
+You have to take the connection down and then up (nmcli con down NAME; nmcli con up NAME) or most changes can be applied directly with nmcli dev reapply NAME
+
+Firewalld
+
+Firewalld is a good interface to create and manage a simple firewall but the framework behind it is the Netfilter (nftables) firewall.
+
+To see config files for services, check out. "/usr/lib/firewalld/"
+General commands
+
+firewall-cmd --list-all
+
+firewall-cmd --get-services
+
+firewall-cmd --add-service squid --permanent
+Remember to use the permanent switch, otherwise the rule is written only to the runtime and is lost if you restart firewalld or the server!
+
+firewall-cmd --reload
+
+Add IP address to the trusted zone. firewall-cmd --zone=trusted --add-source=192.168.124.1 --permanent
+
+List configuration for all zones. firewall-cmd --list-all-zones
+
+
 or 
 #systemctl restart NetworkManager
 
