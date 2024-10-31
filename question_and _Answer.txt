@@ -200,3 +200,37 @@ check the file and make sure that wanted by is default.target. "WantedBy=default
 see the nginx process running under user rambo. You can also ``curl localhost:8089``
     14. ``ps faux | less`` Look for processes under user rambo.
 
+
+##QUESTION: AutoFS
+
+ANSWER:
+Autofs
+
+On the exam, check "/etc/auto.misc" for nice syntax examples that can help if you're stuck! You won't see auto.misc until you have installed the autofs package.
+
+Now on the client that will be using autofs, do the following.
+
+First make sure you can see the exports on from the NFS Server.
+
+showmount -e nfsservername
+
+Automount is common for home directories. An NFS server is providing access to home directories, and the home directory is automounted when the user logs in.
+
+Install autofs.
+
+dnf install autofs
+
+In "/etc/auto.master" you'll identify the directory that automount should manage, and the file that is used for additional mount information.
+
+    "/nfsdata" and "/etc/auto.nfsdata"
+    "/nfsdata" is the mounting point and the second line "/etc/auto.nfsdata" is a file you create that gives the necessary parameters to mount it.
+    In "/etc/auto.nfsdata" you'll identify the subdirectory on which to mount, and what to mount.
+    files -rw nfsservername:/nfsdata
+
+Files is a subdirectory under /nfsdata that is created when you cd into it.
+
+For nfsserver, put the ip or the DNS name of the server you want to automount from.
+
+Enable and start the autofs service. systemctl enable --now autofs
+
+This will automatically create the folders necessary under the root "/" folder. In this example it creates the ''/misc" and "/nfsdata" folders. If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsdata is empty you will cd into the /nfsdata directory on the nfsserver.
