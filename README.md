@@ -1,6 +1,8 @@
 # **RHCSA(Ex200)EXAM QUESTIONS and ANSWER**
+
 ---
 **QUESTION 1: Configure your Host Name, IP Address, Gateway and DNS**.
+
 ```linux
 Host name: station.domain40.example.com
 IP Address:172.24.40.40/24
@@ -9,6 +11,7 @@ DNS:172.24.40.1
 ```
 
 **ANSWER:**
+
 ```linux
 #mcli con show
 #nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1
@@ -20,12 +23,12 @@ or
 #hostnamectl set-hostname station.domain40.example.com
 #hostnamectl status
 ```
+
 **QUESTION 2: Create a backup file named /root/backup.tar.bz2 or /root/backup.tar.gz2. The backup file should contain the content
 of /usr/local and should be zipped with bzip2 or gzip2 compression format**.
 
-
-
 Both bzip2 and gzip are popular compression tools in Unix/Linux environments.
+
 1. gzip (GNU Zip)
 
 gzip is a widely used compression tool that is based on the DEFLATE compression algorithm. Files compressed with gzip typically have the .gz extension.
@@ -49,6 +52,7 @@ Both tools can also be combined with tar to compress multiple files into a singl
 #tar -czvf archive.tar.gz directory/
 
 ```
+
 ---
 
 **With bzip:**
@@ -57,15 +61,15 @@ Both tools can also be combined with tar to compress multiple files into a singl
 #tar -cjvf archive.tar.bz2 directory/
 
 ```
+
 ---
 
 **QUESTION 3: Change the current tuning profile for serverb to default profile.**
 
-
-
 **Tuned** is a powerful tool used on Linux systems (mainly Red Hat-based distributions like RHEL, CentOS, and Fedora) to optimize and manage system performance. It is a dynamic system tuning daemon that can adjust system settings based on specific workload profiles to achieve better performance, power savings, or a balance between the two.
 
 **ANSWER:**
+
 ```linux
 # dnf install tuned -y
 # systemctl enable tuned
@@ -80,10 +84,12 @@ virtual-guest
 
 ---
 **QUESTION 4: Configure local repository using following link**
-- http://content.example.com/rhel9.0/x86_64/BaseOS 
-- http://content.example.com/rhel9.0/x86_64/AppStream
+
+- <http://content.example.com/rhel9.0/x86_64/BaseOS>
+- <http://content.example.com/rhel9.0/x86_64/AppStream>
 
 **ANSWER:**
+
 ```linux
 # vi /etc/yum.repos.d/local.repo
 [BaseOS]
@@ -100,11 +106,13 @@ gpgcheck=0
 #yum repolist
 
 ```
+
 ---
 **QUESTION 5: Create a user named alex, and the user id should be 1234, and the password should be redhat.**
 
 **ANSWER:**
 The **useradd** command in Linux is used to create new user accounts. The -u option specifies the user ID (UID) for the new user.
+
 ```linux
 #useradd -u 1234 alex
 #passwd alex
@@ -112,10 +120,10 @@ The **useradd** command in Linux is used to create new user accounts. The -u opt
 .
 #tail -1 /etc/passwd
 ```
+
 ---
 **QUESTION 6: Add 3 users: harry, natasha, tom.
 The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive.**
-
 
 1. **useradd -g** (Primary Group):
 The -g option is used to specify the primary group of the user. Each user must belong to a primary group, and this group is used for file ownership by default.
@@ -128,6 +136,7 @@ The -G option allows you to add the user to one or more supplementary groups. A 
     /bin/zsh: Z shell (advanced shell with more features)
     /sbin/nologin: This is used to prevent the user from logging in interactively. This is useful for system accounts or users who should not have direct shell access.
 **ANSWER:**
+
 ```linux
 #groupadd admin
 #useradd -G admin harry
@@ -137,53 +146,66 @@ The -G option allows you to add the user to one or more supplementary groups. A 
 .
 .
 ```
+
 ---
 **QUESTION 7: Find all the files owned by user natasha and redirect the output to /tmp/output.
 Find all files that are larger than 5MiB in the /etc directory and copy them to /find/largedir and redirect the output to /find/largefiles.**
-
 
 The **find** command in Linux is used to search for files and directories based on various criteria such as name, size, type, ownership, permissions, etc. It is a powerful tool for searching files in a hierarchical directory structure.
 **Common Options:**
 
 - By Name: Find files or directories by name using **-name**
+
 ```linux
 find /path -name "filename"
 ```
+
 - By Type: Find files by type (**-type**):
-    - f: regular file
-    - d: directory
-    - l: symbolic link
+  - f: regular file
+  - d: directory
+  - l: symbolic link
+
 ```linux
 find /path -type f   # for files
 find /path -type d   # for directories
 ```
+
 - By Size: Find files by size (**-size**):
 
-    - **+** for greater than
-    - **-** for less than
+  - **+** for greater than
+  - **-** for less than
+
 ```linux
 find /path -size +10M  # files larger than 10MB
 find /path -size -1G   # files smaller than 1GB
 ```
+
 - By Ownership: Find files by user or group ownership:
+
 ```linux
 find /path -user username    # files owned by a specific user
 find /path -group groupname  # files owned by a specific group
 ```
+
 - By Permissions: Find files with specific permissions:
+
 ```linux
 find /path -perm 755    # files with permission 755
 ```
+
 - By Modification Time: Find files based on their last modification time (-mtime):
 
-    - +n: More than n days old
-    - -n: Less than n days old
+  - +n: More than n days old
+  - -n: Less than n days old
+
 ```linux
 find /path -mtime +7   # files modified more than 7 days ago
 find /path -mtime -3   # files modified less than 3 days ago
 
 ```
+
 **ANSWER:**
+
 ```linux
 # find / -user natasha -type f > /tmp/output
 # cat /tmp/output
