@@ -256,5 +256,27 @@ If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsda
 
 ==========================================================
 
-
-
+#QUESTION: [Autofs Configuration] 
+ 
+Configure autofs to automount the home directories of user remoteuser15. Note the following: 
+• utility.lab.example.com (172.24.10.10), NFS-exports /netdir to your system, where
+user is remoteuser15 
+• remoteuser15’s home directory is utility.lab.example.com:/netdir/remoteuser15 
+• remoteuser15’s home directory should be auto mounted locally beneath /netdir as
+/netdir/remoteuser15 
+• Home directories must be writable by their users while you are able to login as any of
+the remoteuser15 only home directory that is accessible from your system 
+ 
+#Answer:
+[root@servera ~]# dnf install autofs
+[root@servera ~]# systemctl enable --now autofs
+[root@servera ~]# vim /etc/auto.master.d/demo.autofs
+            /netdir  /etc/auto.demo
+[root@servera ~]# vim /etc/auto.demo
+             remoteuser15  -fstype=nfs,rw,sync   utility.lab.example.com:/netdir/remoteuser15 
+[root@servera ~]# systemctl restart autofs
+[root@servera ~]# df -h
+[root@servera ~]# su - remoteuser15
+[remoteuser15@servera ~]$ ls
+[remoteuser15@servera ~]$ touch file1 
+=======================================
