@@ -235,3 +235,26 @@ Enable and start the autofs service. systemctl enable --now autofs
 
 This will automatically create the folders necessary under the root "/" folder. In this example it creates the ''/misc" and "/nfsdata" folders. 
 If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsdata is empty you will cd into the /nfsdata directory on the nfsserver.
+
+==========================================================
+
+#QUESTION: SELinux Context (semanage)
+
+#ANSWER:
+
+#semanage port -l | grep 80
+
+# systemctl status httpd
+
+# journalctl -u httpd
+
+#semanage port -a -t http_port_t -p tcp 82
+#firewall-cmd --permanent --add-port=82/tcp
+#firewall-cmd --reload
+
+[ man semanage-port]
+
+==========================================================
+
+
+
