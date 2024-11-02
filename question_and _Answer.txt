@@ -280,3 +280,13 @@ the remoteuser15 only home directory that is accessible from your system
 [remoteuser15@servera ~]$ ls
 [remoteuser15@servera ~]$ touch file1 
 =======================================
+
+QUESTION: Create an LVM name wshare from wgroup vloume. note the following:
+- PE size should be 8MB
+- LVM size should be 50 extents
+- format with ext4 file system and mount it under /mnt/wshare. and it should auto mount after next reboot.
+exam can have filesystem -vfat, xfs
+
+ANSWER:
+
+
