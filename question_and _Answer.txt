@@ -281,12 +281,49 @@ the remoteuser15 only home directory that is accessible from your system
 [remoteuser15@servera ~]$ touch file1 
 =======================================
 
-QUESTION: Create an LVM name wshare from wgroup vloume. note the following:
+# QUESTION: Create an LVM name wshare from wgroup vloume. note the following:
 - PE size should be 8MB
 - LVM size should be 50 extents
 - format with ext4 file system and mount it under /mnt/wshare. and it should auto mount after next reboot.
 exam can have filesystem -vfat, xfs
 
-ANSWER:
+# ANSWER:
+suppose we have vdb drive and we have to use this drive for LVM.
+
+#lsblk
+
+#fdisk /dev/vdb
+- n
+- Enter
+- Enter
+- Enter
+- +500M
+- t 
+- 8e
+- w 
+
+# partprobe /dev/vdb 
+
+#pvcreate /dev/vdb1
+
+#vgcreate -s 8M wgroup /dev/vdb1
+
+#lvcreate -l 50 -n wshare /dev/wgroup
+
+#mkfs.ext4 /dev/wgroup/wshare
+
+#mkdir /mnt/wshare
+
+make an entry in fstab
+
+#vi /etc/fstab
+
+/dev/wgroup/wshare /mnt/wshare ext4 defaults 0 0
+
+#mount -abcde
+
+#df -H
+
+
 
 
