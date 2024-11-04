@@ -44,9 +44,7 @@ or
 
 # Container Questions
 
-## Questions 01: Create a container image named monitor from a Containerfile from below link
-
-http://fromwebserver/Containerfile . All this task done using student user.
+## Questions 01: Create a container image named monitor from a Containerfile from below link http://fromwebserver/Containerfile . All this task done using student user.
 
 ## Answer:
 
@@ -81,11 +79,9 @@ CMD nginx -g "daemon off;"
 REPOSITORY TAG IMAGE ID CREATED SIZE
 localhost/monitor latest aa30769bf294 30 seconds ago 489 MB
 
-## Questions 02: Create rootless container and do volume mapping which they asked you in the question and run container
+## Questions 02: Create rootless container and do volume mapping which they asked you in the question and run container as a service from normal user account, the service must be enable so it could start automatically after reboot.
 
-as a service from normal user account, the service must be enable so it could start automatically after reboot.
-- Create a container named as ‘ascii2pdf’ using the previously created container image from previous question
-monitor
+- Create a container named as ‘ascii2pdf’ using the previously created container image from previous question monitor
 - Map the ‘/opt/files’ to container ‘/opt/incoming’
 - Map the ‘/opt/processed’ to container ‘/opt/outgoing’
 - Create systemd service as container-ascii2pdf.service
