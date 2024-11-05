@@ -9,10 +9,10 @@ ANSWER:
 
 add new interface:
 
-nmcli con add type ethernet ifname eth0 con-name LAN ipv4.addresses 192.168.1.10/24 ipv4.gateway 192.168.1.1
+nmcli con add type ethernet ifname eth0 con-name LAN ipv4.addresses 192.168.1.10/24 ipv4.gateway 192.168.1.1 ipv4.method manual connection.autoconnect yes
 
-#nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1
-#nmcli con mod LAN ipv4.method manual
+#nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1 ipv4.method manual connection.autoconnect yes
+#nmcli con mod LAN 
 #nmcli con up LAN
 or 
 #systemctl restart NetworkManager
