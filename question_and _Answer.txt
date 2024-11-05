@@ -284,3 +284,15 @@ umask 0077 ( append lis line to .bashrc file , save and exit from .bashrc )
 
 [root@servera~]
 =============================================
+
+## QUESTION: Create myscript file to locate all files of 10MB lower and also set the permission of set user identifier (SGID) and list of all file will save in /root/myscript. copy script file into /usr/local/bin. Make sure run script any location.
+
+vim myscript.sh
+
+#!/bin/bash
+mkdir -v /root/myfiles
+find /usr/local -size -10M -perm /2000 -exec cp -v {} /root/myfiles/ \;
+chmod u+x /usr/local/bin/myserach
+
+./mysearch.sh
+
