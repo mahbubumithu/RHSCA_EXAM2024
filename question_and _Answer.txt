@@ -249,3 +249,16 @@ If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsda
 #chmod +x /usr/local/bin/rhcsa
 
 #vi /home/ablerate/.bash_profile
+
+=============================================
+# SUDO Configuration
+
+###Question: Configure sudo permissions for users who are members of the admin group, allowing them to use sudo 
+without a password.
+
+## Answer: 
+[root@servera~]#vim /etc/sudoers.d/exam 
+ %admin ALL=(ALL) NOPASSWD: ALL (insert this line and save and exit )
+
+ ==========================================
+ 
