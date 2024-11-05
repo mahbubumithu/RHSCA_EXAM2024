@@ -296,3 +296,15 @@ chmod u+x /usr/local/bin/myserach
 
 ./mysearch.sh
 
+===============================================
+
+## QUESTION: Welcome Message
+
+Answer:
+
+vi ~/.bash_profile
+
+export PATH 
+echo "Welcome to Student Profile" 
+
+=============================================
