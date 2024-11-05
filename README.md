@@ -14,9 +14,8 @@ DNS:172.24.40.1
 
 ```linux
 #mcli con show
-#nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1
-#nmcli con mod LAN ipv4.method manual
-#nmcli con up LAN
+#nmcli con mod LAN ipv4.addresses 172.24.40.40/24 ipv4.gateway 172.24.40.1 ipv4.dns 172.24.40.1 ipv4.method manual connection.autoconnect yes
+#nmcli con down LAN && nmcli con up LAN
 nmcli device status
 nmcli connection show -active
 If the connection is unmanaged or not connecting, try this command.
