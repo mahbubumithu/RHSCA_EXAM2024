@@ -262,3 +262,25 @@ without a password.
 
  ==========================================
  
+# UMASK Configure 
+
+## Questions: Set permission for user daffy. User will get the permission below for file & directory when he creates new 
+
+files or directory. 
+
+-rw-------
+
+drwx------- 
+
+## Answer: 
+
+[root@servera~]# su – daffy 
+
+[daffy@servera~]$ vim .bashrc 
+
+umask 0077 ( append lis line to .bashrc file , save and exit from .bashrc )
+
+[daffy@servera~]$ exit 
+
+[root@servera~]
+=============================================
