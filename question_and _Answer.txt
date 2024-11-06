@@ -249,3 +249,4 @@ If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsda
 #chmod +x /usr/local/bin/rhcsa
 
 #vi /home/ablerate/.bash_profile
+
