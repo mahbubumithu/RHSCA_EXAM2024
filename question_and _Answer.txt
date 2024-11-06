@@ -250,3 +250,17 @@ If you cd /nfsdata, it should be empty. If you cd into files, even though /nfsda
 
 #vi /home/ablerate/.bash_profile
 
+## QUESTION: Create a script file name find.sh. when you run this script, it will find all files from 30K to 60k file size from the directory /etc directory & copies those files to /root/data directory. Set the set-uid permission to these scripts
+
+## ANSWER:
+
+vi /root/find.sh
+
+#!/bin/bash
+
+mkdir -p /root/data
+
+find /etc -type f -size +30k -size -60k -exec cp --parents {} /root/data \;
+
+chmod u+x /root/find.sh
+chmod u+s /root/find.sh
